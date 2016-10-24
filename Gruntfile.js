@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 	    },
 	    js: {
 	      src: ['build/js/Slide.js', 'build/js/Slider.js'],
-	      dest: ['dist/js/image-slider.js'],
+	      dest: 'dist/js/image-slider.js'
 	    },
 	  },
 		min: {
