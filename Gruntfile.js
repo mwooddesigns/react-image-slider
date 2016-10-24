@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 	      separator: ';',
 	    },
 	    js: {
-	      src: ['build/js/Slide.js', 'build/js/Slider.js'],
+	      src: ['build/js/components/Slide.js', 'build/js/components/Slider.js'],
 	      dest: 'dist/js/image-slider.js'
 	    },
 	  },
@@ -35,6 +35,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-babel');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks("grunt-min");
 
-	grunt.registerTask("default", ["babel", "concat"]);
+	grunt.registerTask("default", ["babel", "concat", "min"]);
 };
