@@ -46,22 +46,29 @@
 
 	"use strict";
 
-	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(34);
+	var _react = __webpack_require__(1);
 
-	var Slider = React.createClass({
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(34);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _Slide = __webpack_require__(172);
+
+	var _Slide2 = _interopRequireDefault(_Slide);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Slider = _react2.default.createClass({
 	  displayName: "Slider",
 
 	  render: function render() {
-	    return React.createElement(
-	      "h1",
-	      null,
-	      "Test"
-	    );
+	    return _react2.default.createElement(_Slide2.default, null);
 	  }
 	});
 
-	ReactDOM.render(React.createElement(Slider, null), document.getElementById("image-slider"));
+	_reactDom2.default.render(_react2.default.createElement(Slider, null), document.getElementById("image-slider"));
 
 
 /***/ },
@@ -21430,6 +21437,33 @@
 
 	module.exports = ReactDOMNullInputValuePropHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Slide = _react2.default.createClass({
+	  displayName: "Slide",
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "h1",
+	      null,
+	      "I'm a component being rendered by a parent."
+	    );
+	  }
+	});
+
+	module.exports = Slide;
+
 
 /***/ }
 /******/ ]);

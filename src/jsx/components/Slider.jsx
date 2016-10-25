@@ -1,10 +1,12 @@
-var React = require("react");
-var ReactDOM = require("react-dom");
+import React from "react";
+import ReactDOM from "react-dom";
+
+import Slide from './Slide';
 
 var Slider = React.createClass({
   render: function() {
     return (
-      <h1>Test</h1>
+      <Slide/>
     );
   }
 });
