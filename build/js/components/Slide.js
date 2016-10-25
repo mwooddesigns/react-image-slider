@@ -10,11 +10,7 @@ var Slide = _react2.default.createClass({
   displayName: "Slide",
 
   render: function render() {
-    return _react2.default.createElement(
-      "h1",
-      null,
-      "I'm a component being rendered by a parent."
-    );
+    return _react2.default.createElement("img", { src: this.props.image });
   }
 });
 

@@ -63,8 +63,26 @@
 	var Slider = _react2.default.createClass({
 	  displayName: "Slider",
 
+	  getInitialState: function getInitialState() {
+	    return { currentSlide: 1 };
+	  },
+	  incrementSlide: function incrementSlide() {
+	    var nextSlide = this.state.currentSlide + 1;
+	    this.setState({ currentSlide: nextSlide });
+	    console.log(nextSlide);
+	  },
 	  render: function render() {
-	    return _react2.default.createElement(_Slide2.default, null);
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(_Slide2.default, { image: "http://placehold.it/350x150" }),
+	      _react2.default.createElement(
+	        "p",
+	        { onClick: this.incrementSlide },
+	        "Slide number ",
+	        this.state.currentSlide
+	      )
+	    );
 	  }
 	});
 
@@ -21454,11 +21472,7 @@
 	  displayName: "Slide",
 
 	  render: function render() {
-	    return _react2.default.createElement(
-	      "h1",
-	      null,
-	      "I'm a component being rendered by a parent."
-	    );
+	    return _react2.default.createElement("img", { src: this.props.image });
 	  }
 	});
 
