@@ -15,4 +15,4 @@ var Slider = React.createClass({
   }
 });
 
-ReactDOM.render(React.createElement(Slide, null), document.getElementById("image-slider"));
+ReactDOM.render(React.createElement(Slider, null), document.getElementById("image-slider"));

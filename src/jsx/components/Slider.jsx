@@ -9,4 +9,4 @@ var Slider = React.createClass({
   }
 });
 
-ReactDOM.render(<Slide/>, document.getElementById("image-slider"));
+ReactDOM.render(<Slider/>, document.getElementById("image-slider"));

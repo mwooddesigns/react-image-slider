@@ -16,26 +16,39 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
-		concat: {
-	    options: {
-	      separator: ';',
-	    },
-	    js: {
-	      src: ['build/js/components/Slide.js', 'build/js/components/Slider.js'],
-	      dest: 'dist/js/image-slider.js'
-	    },
-	  },
+		webpack: {
+			dev: {
+				// webpack options
+				entry: {
+					slider: "./build/js/components/Slider.js"
+				},
+				output: {
+					path: "dist/js",
+					filename: "slider.js",
+				},
+
+				stats: {
+					// Configure the console output
+					colors: true,
+					modules: true,
+					reasons: true
+				},
+
+				progress: true, // Don't show progress
+				keepalive: true, // don't finish the grunt task
+			}
+		},
 		min: {
 			js: {
-				src: "dist/js/image-slider.js",
-				dest: "dist/js/image-slider.min.js"
+				src: "dist/js/slider.js",
+				dest: "dist/js/slider.min.js"
 			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-babel');
-	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-webpack');
 	grunt.loadNpmTasks("grunt-min");
 
-	grunt.registerTask("default", ["babel", "concat", "min"]);
+	grunt.registerTask("default", ["babel", "webpack", "min"]);
 };
