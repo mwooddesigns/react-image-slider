@@ -14,11 +14,20 @@ var _Slide2 = _interopRequireDefault(_Slide);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var target = document.getElementById("image-slider");
+
+var images = target.getAttribute("data-images").split(",");
+
+console.log(images);
+
 var Slider = _react2.default.createClass({
   displayName: "Slider",
 
   getInitialState: function getInitialState() {
-    return { currentSlide: 1 };
+    return {
+      currentSlide: 1,
+      images: target.getAttribute("data-images").split(",")
+    };
   },
   incrementSlide: function incrementSlide() {
     var nextSlide = this.state.currentSlide + 1;
@@ -29,7 +38,9 @@ var Slider = _react2.default.createClass({
     return _react2.default.createElement(
       "div",
       null,
-      _react2.default.createElement(_Slide2.default, { image: "http://placehold.it/350x150" }),
+      this.state.images.map(function (image) {
+        return _react2.default.createElement(_Slide2.default, { image: image });
+      }),
       _react2.default.createElement(
         "p",
         { onClick: this.incrementSlide },
@@ -40,4 +51,4 @@ var Slider = _react2.default.createClass({
   }
 });
 
-_reactDom2.default.render(_react2.default.createElement(Slider, null), document.getElementById("image-slider"));
+_reactDom2.default.render(_react2.default.createElement(Slider, null), target);

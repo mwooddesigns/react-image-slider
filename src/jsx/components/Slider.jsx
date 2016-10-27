@@ -3,9 +3,18 @@ import ReactDOM from "react-dom";
 
 import Slide from './Slide';
 
+var target = document.getElementById("image-slider");
+
+var images = target.getAttribute("data-images").split(",");
+
+console.log(images);
+
 var Slider = React.createClass({
   getInitialState: function() {
-    return {currentSlide: 1}
+    return {
+      currentSlide: 1,
+      images: target.getAttribute("data-images").split(",")
+    };
   },
   incrementSlide: function() {
     var nextSlide = this.state.currentSlide + 1;
@@ -15,11 +24,13 @@ var Slider = React.createClass({
   render: function() {
     return (
       <div>
-        <Slide image="http://placehold.it/350x150"/>
+        {this.state.images.map(function(image){
+          return <Slide image={image}/>
+        })}
         <p onClick={this.incrementSlide}>Slide number {this.state.currentSlide}</p>
       </div>
     );
   }
 });
 
-ReactDOM.render(<Slider/>, document.getElementById("image-slider"));
+ReactDOM.render(<Slider/>, target);
