@@ -17,26 +17,10 @@ module.exports = function(grunt) {
 			}
 		},
 		webpack: {
-			dev: {
-				// webpack options
-				entry: {
-					slider: "./build/js/components/Slider.js"
-				},
-				output: {
-					path: "dist/js",
-					filename: "slider.js",
-				},
+			options: require("./webpack.config.js"),
+			prod: {
 
-				stats: {
-					// Configure the console output
-					colors: true,
-					modules: true,
-					reasons: true
-				},
-
-				progress: true, // Don't show progress
-				keepalive: true, // don't finish the grunt task
-			}
+			},
 		},
 		min: {
 			js: {
