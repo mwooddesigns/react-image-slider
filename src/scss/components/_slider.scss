@@ -1,1 +1,7 @@
 @import "_slide.scss";
+@import "_control.scss";
+.slider {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}

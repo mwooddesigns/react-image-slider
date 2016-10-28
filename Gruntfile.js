@@ -26,6 +26,10 @@ module.exports = function(grunt) {
 			js: {
 				src: "dist/js/slider.js",
 				dest: "dist/js/slider.min.js"
+			},
+			css: {
+				src: "src/css/master.css",
+				dest: "dist/css/master.css",
 			}
 		}
 	});

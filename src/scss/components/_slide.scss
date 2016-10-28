@@ -1,0 +1,11 @@
+.slide {
+  position: absolute;
+  top: 0;
+  left: -110%;
+  transition: all 0.2s;
+  &.active {
+    position: relative;
+    float: left;
+    left: 0;
+  }
+}

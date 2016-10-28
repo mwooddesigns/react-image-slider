@@ -10,7 +10,12 @@ var Slide = _react2.default.createClass({
   displayName: "Slide",
 
   render: function render() {
-    return _react2.default.createElement("img", { src: this.props.image });
+    console.log(this.props.key);
+    if (this.props.isActive == "true") {
+      return _react2.default.createElement("img", { src: this.props.image, className: "slide active" });
+    } else {
+      return _react2.default.createElement("img", { src: this.props.image, className: "slide" });
+    }
   }
 });
 

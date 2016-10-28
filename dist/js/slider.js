@@ -58,34 +58,51 @@
 
 	var _Slide2 = _interopRequireDefault(_Slide);
 
+	var _Control = __webpack_require__(164);
+
+	var _Control2 = _interopRequireDefault(_Control);
+
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	var target = document.getElementById("image-slider");
 
-	var images = target.getAttribute("data-images").split(",");
-
-	console.log(images);
-
 	var Slider = _react2.default.createClass({
 	  displayName: "Slider",
 
+	  componentWillMount: function componentWillMount() {
+	    var images = target.getAttribute("data-images").split(",");
+	  },
 	  getInitialState: function getInitialState() {
 	    return {
-	      currentSlide: 1,
+	      currentSlide: 0,
 	      images: target.getAttribute("data-images").split(",")
 	    };
 	  },
 	  incrementSlide: function incrementSlide() {
 	    var nextSlide = this.state.currentSlide + 1;
+	    if (nextSlide >= this.state.images.length) {
+	      nextSlide = 0;
+	    }
 	    this.setState({ currentSlide: nextSlide });
-	    console.log(nextSlide);
+	  },
+	  decrementSlide: function decrementSlide() {
+	    var previousSlide = this.state.currentSlide + 1;
+	    if (previousSlide < 0) {
+	      previousSlide = this.state.images.length - 1;
+	    }
+	    this.setState({ currentSlide: previousSlide });
 	  },
 	  render: function render() {
-	    return _react2.default.createElement("div", null, this.state.images.map(function (image) {
-	      return _react2.default.createElement(_Slide2.default, { image: image });
-	    }), _react2.default.createElement("p", { onClick: this.incrementSlide }, "Slide number ", this.state.currentSlide));
+	    var slide = this.state.currentSlide;
+	    return _react2.default.createElement("div", null, _react2.default.createElement("div", { className: "slider clearfix" }, this.state.images.map(function (image, i) {
+	      if (slide == i) {
+	        return _react2.default.createElement(_Slide2.default, { image: image, key: i, isActive: "true" });
+	      } else {
+	        return _react2.default.createElement(_Slide2.default, { image: image, key: i, isActive: "false" });
+	      }
+	    }), _react2.default.createElement(_Control2.default, { clickHandler: this.decrementSlide, direction: "prev" }), _react2.default.createElement(_Control2.default, { clickHandler: this.incrementSlide, direction: "next" })), _react2.default.createElement("p", null, "Slide number ", this.state.currentSlide + 1));
 	  }
 	});
 
@@ -20489,11 +20506,44 @@
 	  displayName: "Slide",
 
 	  render: function render() {
-	    return _react2.default.createElement("img", { src: this.props.image });
+	    console.log(this.props.key);
+	    if (this.props.isActive == "true") {
+	      return _react2.default.createElement("img", { src: this.props.image, className: "slide active" });
+	    } else {
+	      return _react2.default.createElement("img", { src: this.props.image, className: "slide" });
+	    }
 	  }
 	});
 
 		module.exports = Slide;
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	var Control = _react2.default.createClass({
+	  displayName: "Control",
+
+	  render: function render() {
+	    if (this.props.direction == "prev") {
+	      return _react2.default.createElement("a", { className: "control prev", onClick: this.props.clickHandler }, _react2.default.createElement("i", { className: "fa fa-chevron-left" }));
+	    } else {
+	      return _react2.default.createElement("a", { className: "control next", onClick: this.props.clickHandler }, _react2.default.createElement("i", { className: "fa fa-chevron-right" }));
+	    }
+	  }
+	});
+
+		module.exports = Control;
 
 /***/ }
 /******/ ]);
